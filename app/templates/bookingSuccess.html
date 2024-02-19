@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Booking Success</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultsAndBookingsStyle.css')}}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+
+    <h1 id="uititle">Your receipt</h1>
+    <h3 id="uititle">Thanks for booking! Your booking details are below and can also be found in the booking tab at the top of the page</h3>
+    <div id="resultstableContainer">
+        <table id="receiptTable">
+
+            <tr> 
+                <th> Travel Type </th>
+                <th> Travel date </th>
+                <th> Departure location </th>
+                <th> Departure time </th> 
+                <th> Arrival location </th> 
+                <th> Arrival time</th>
+                <th> Travel time </th>
+                <th> Class </th>
+                <th> Quantity </th>
+                <th> Total Price</th>
+            </tr>
+            {% if depatureMessage != ""%}
+            <tr>
+                <td colspan="10">{{depatureMessage}}</td>
+            </tr>
+            {%endif%}
+            {% for row in departRoutes %} 
+                <tr> 
+                <td> {{row[0]}} </td>
+                <td>{{departureDate}}</td>
+                <td> {{row[1]}} </td>
+                <td> {{row [2]}} </td> 
+                <td> {{row [3]}} </td> 
+                <td> {{row [4]}} </td>
+                <td> {{row [5]}} </td>
+                <td> {{departureTravelClass}} </td>
+                <td> {{departureQuantity}} </td>
+                <td> £{{departureTotalPrice}} </td>
+                </tr>
+            {% endfor%}
+            {% if arrivalMessage != ""%}
+            <tr>
+                
+                <td colspan="10">{{arrivalMessage}}</td>
+            </tr>
+            {%endif%}
+            {% for row in returnRoutes %} 
+            <tr> 
+            <td> {{row[0]}} </td>
+            <td>{{returnDate}}</td>
+            <td> {{row[1]}} </td>
+            <td> {{row [2]}} </td> 
+            <td> {{row [3]}} </td> 
+            <td> {{row [4]}} </td>
+            <td> {{row [5]}} </td>
+            <td> {{arrivalTravelClass}} </td>
+            <td> {{arrivalQuantity}} </td>
+            <td> £{{arrivalTotalPrice}} </td>
+            </tr>
+        {% endfor%}
+
+    
+        </table>
+        {% if totalSaving != 0  %}
+            <p id="uititle">As you have booked in advance you have made a total saving of £{{totalSaving}}</p>
+        {% endif %}
+    </div>
+    
+    <button onclick="saveAsPDF()" id="submit">Save as PDF</button>
+
+
+    <!-- <h3 id="uititle">{{depatureMessage}}</h3>
+    <h3 id="uititle">{{arrivalMessage}}</h3> -->
+</div>
+
+<div class="main">
+
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Admin</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminStyle.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    <h1 id="uititle">Sales</h1>
+    <table id="pageSelectTable">
+      <tr><td id="pageSelectRow"><input type="button" value="Accounts" class="button"  onclick="window.location.href='{{ url_for('adminAccounts') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Bookings" class="button"  onclick="window.location.href='{{ url_for('adminBookings') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Journeys" class="button" onclick="window.location.href='{{ url_for('adminJourneys') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value=" &nbsp; Sales  &nbsp;&nbsp;" class="button" onclick="window.location.href='{{ url_for('adminSales') }}'"></td></tr>
+  </table>
+
+  <div id="topCustomerTableContainer">
+  <table id="topCustomerTable">
+    <tr>
+      <th colspan="5"> Top customers </th>
+    </tr>
+    <tr> 
+      <th> Account holder ID </th>
+      <th> First name </th> 
+      <th> Last name </th> 
+      <th> Email</th>
+      <th> Total spend </th>
+
+    </tr>
+
+    {% for row in queryResults %} 
+    <tr> 
+      <td> {{row[0]}} </td>
+      <td> {{row [1]}} </td> 
+      <td> {{row [2]}} </td> 
+      <td> {{row [3]}} </td>
+      <td> £{{row [4]}} </td>
+    </tr>
+    {% endfor%}
+  </table>
+  </div>
+
+  <table id="chartInputTable">
+    <tr>
+      <th colspan="2">Sales per month</th>
+      <th colspan="2">Sales per year</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <label for="monthInput">Month:</label><br>
+        <input type="month" id="monthInput">
+      </td>
+      <td>
+        <label for="yearInput">Year:</label><br>
+        <input type="number" id="yearInput" name="yearInput">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="travelTypeSelect">Travel type:</label><br>
+        <select name="travelType" id="travelTypeSelect">
+          <option value="air">Air</option>
+          <option value="train">Train</option>
+          <option value="coach">Coach</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" id="drawRow">
+        <button onclick="salesPerJourney()" id="draw">Draw</button>
+      </td>
+      <td colspan="2" id="drawRow">
+        <button onclick="salesPerYear()" id="draw">Draw</button>
+      </td>
+    </tr>
+  </table>
+  
+
+    <div id="salesChart">
+      <canvas id="chart"></canvas>
+    </div>
+
+  
+  <div class="main">
+  </div>
+  
+  {% endblock %}

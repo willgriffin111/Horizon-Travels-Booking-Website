@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Admin</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    <h1 id="uititle">Bookings</h1>
+    <table id="pageSelectTable">
+      <tr><td id="pageSelectRow"><input type="button" value="Accounts" class="button"  onclick="window.location.href='{{ url_for('adminAccounts') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Bookings" class="button"  onclick="window.location.href='{{ url_for('adminBookings') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Journeys" class="button" onclick="window.location.href='{{ url_for('adminJourneys') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value=" &nbsp; Sales  &nbsp;&nbsp;" class="button" onclick="window.location.href='{{ url_for('adminSales') }}'"></td></tr>
+  </table>
+  <form method="POST">
+  {% if queryResults | length == 0 %}
+    <h2 id="uititle"> No bookings </h2>
+  {% else %}
+    <div  id="bookingTableContainer">
+    <table class="userTable" id="bookingTable">
+        <tr> 
+          <th> Booking ID</th>
+          <th> First name </th> 
+          <th> DOB</th>
+          <th>Travel Type </th>
+          <th> Departure location </th>
+          <th> Depature time </th> 
+          <th> Arrival location </th> 
+          <th> Arrival time</th>
+          <th> Travel time </th>
+          <th> Travel class </th>
+          <th> Quantity</th>
+          <th> Price</th>
+          <th> Booking Created</th>
+          <th> Booking modified</th>
+        </tr>
+        {% for row in queryResults %} 
+          <tr> 
+            <td> {{row[0]}} </td>
+            <td> {{row [1]}} </td> 
+            <td> {{row [2]}} </td> 
+            <!-- <td> {{row [3]}} </td> -->
+            <td> {{row [4]}} </td>
+            <td> {{row [5]}} </td>
+            <td> {{row [6]}} </td>
+            <td> {{row [7]}} </td>
+            <td> {{row [8]}} </td>
+            <td> {{row [9]}} </td>
+            <td> {{row [10]}} </td>
+            <td> {{row [11]}} </td>
+            <td> £{{row [12]}} </td>
+            <td> {{row [13]}} </td>
+            <td> {{row [14]}} </td>
+            <td>  <input type="radio" name="selected" value="{{row[0]}}" required> SELECT</td>
+            
+          </tr>
+        {% endfor %}
+    </table>
+  </div>
+    <h3 id="message"> {{message}} </h3>
+    <input id="submit" type="submit" value="Cancel">
+  </form>
+  
+    {% endif %}
+    
+ 
+
+  
+
+
+</div>
+
+<div class="main">
+  </div>
+
+  {% endblock %}

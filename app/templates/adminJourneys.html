@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Admin</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    <h1 id="uititle">Journeys</h1>
+    <table id="pageSelectTable">
+      <tr><td id="pageSelectRow"><input type="button" value="Accounts" class="button"  onclick="window.location.href='{{ url_for('adminAccounts') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Bookings" class="button"  onclick="window.location.href='{{ url_for('adminBookings') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Journeys" class="button" onclick="window.location.href='{{ url_for('adminJourneys') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value=" &nbsp; Sales  &nbsp;&nbsp;" class="button" onclick="window.location.href='{{ url_for('adminSales') }}'"></td></tr>
+  </table>
+
+ <form method="POST">
+  <div id="journeyTableContainer">
+  <table class="userTable" id="journeyTable">
+      <tr> 
+        <th> Journey ID</th>
+        <th> Travel Type </th> 
+        <th> Depature Location </th> 
+        <th> Depature Time</th>
+        <th> Arrival Location</th>
+        <th> Arrival Time </th>
+        <th>Travel Time </th>
+        <th>Price</th>
+        <th>Journey Created</th>
+        <th>Journey Modified</th>
+      </tr>
+      {% for row in queryResults %} 
+        <tr> 
+          <td> {{row[0]}} </td>
+          <td> {{row [1]}} </td> 
+          <td> {{row [2]}} </td> 
+          <td> {{row [3]}} </td>
+          <td> {{row [4]}} </td>
+          <td> {{row [5]}} </td>
+          <td> {{row [6]}} </td>
+          <td>£{{row[7]}} </td>
+          <td> {{row [8]}} </td>
+          <td> {{row [9]}} </td>
+          <td>  <input type="radio" name="travelId" value="{{row[0]}}"> Select</td>
+        </tr>
+      {% endfor %}
+
+  </table>
+</div>
+  <div id="journeyModifyTableContainer">
+  <table id="tableContainer">
+    <tr>
+      <td id="tableContainer">
+  <div id="modifyType">
+    <input type="radio" name="modifyType" value="delete" id="deleteJourney" onchange="javascript:modifyJourneyTable();"/> Delete selected <br>
+    <input type="radio" name="modifyType" value="insert" id="insertJourney" onchange="javascript:modifyJourneyTable();" checked/> Insert journey <br>
+    <input type="radio" name="modifyType" value="modify" id="modifyJourney" onchange="javascript:modifyJourneyTable();"/> Modify journey
+  </div>
+    </td>
+    <td id="tableContainer">
+
+  <table id="insertTable">
+    <tr>
+      <th> Travel Type </th> 
+      <th> Depature Location </th> 
+      <th> Depature Time</th>
+      <th> Arrival Location</th>
+      <th> Arrival Time </th>
+      <th>&nbsp;&nbsp;Price&nbsp;&nbsp; </th>
+    </tr>
+      <td>
+        <select name="travelType" class="insertJourneyBox" required>
+          <option value="air">Air</option>
+          <option value="train">Train</option>
+          <option value="coach">Coach</option>
+        </select>
+      </td>
+      <td><input type="text" name="departLocation" class="insertJourneyBox" required></td>
+      <td><input type="time" step="1"  name="departTime" class="insertJourneyBox" required></td>
+      <td><input type="text" name="arrivalLocation" class="insertJourneyBox" required></td>
+      <td><input type="time"  step="1" name="arrivalTime" class="insertJourneyBox" required></td>
+      <td><input type="number" step="any" name="price" class="insertJourneyBox" required></td>
+    </tr>
+  </table>
+</td>
+</tr>
+</table>
+</div>
+<input type="submit" value="Submit" id="submit">
+</form>
+</div>
+
+<div class="main">
+  </div>
+
+  {% endblock %} 

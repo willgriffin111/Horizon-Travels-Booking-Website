@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Horizon Travels</title>
+    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainStyle.css') }}">
+
+
+    <script src="{{url_for('static', filename='js/java.js')}}"></script>
+    
+    {% block head %}{% endblock %} 
+</head>
+<body>
+    <div class="header">
+
+        <a href ="{{ url_for('index') }}"><img class="logo1"src ="{{url_for('static',filename='images/logoWithText.png')}}"></a>
+        <a href ="{{ url_for('index') }}"><img class="logo2"src ="{{url_for('static',filename='images/logoWithoutText.png')}}"></a>
+
+        {% if usertype =='admin' %}
+            <a href ="{{ url_for('adminAccounts') }}" id="navLink">Admin</a>
+            <a href ="{{ url_for('account') }}" id="navLink">Account</a>
+            <a href ="{{ url_for('bookings') }}" id="navLink">Booking</a>
+            <a href ="{{url_for('logout')}}" id="navLink">Sign out</a>
+        
+        {% elif usertype =='standard' %}
+            <a href ="{{ url_for('account') }}" id="navLink">Account</a>
+            <a href ="{{ url_for('bookings') }}" id="navLink">Booking</a>
+            <a href ="{{url_for('logout')}}" id="navLink">Sign out</a>
+
+        {% else %}
+            <a href ="{{ url_for('login') }}" id="navLink">Login/Sign up</a>
+        {% endif %}
+
+    
+    </div>
+    {% block body %}{% endblock %}
+
+
+
+
+</body>
+</html>
+
+

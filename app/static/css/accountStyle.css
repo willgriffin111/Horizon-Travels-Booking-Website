@@ -1,0 +1,76 @@
+.uibox{
+
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 100px;
+  height: 750px;
+  
+}
+
+.accountImage{
+  width: 150px;
+  /* height: 160px; */
+}
+
+tr,th,td{
+  border: 1px solid;
+  background-color: whitesmoke;
+  font-size: 25px;
+  padding: 10px;
+}
+
+
+
+#accountTable{
+  position: relative;
+  margin: 10.5% 0 0 5%;
+  float: left;
+  width: 30%;
+  white-space: nowrap;
+}
+
+.passwordbox{
+  width: 100%;
+  height: 40px;
+}
+
+
+#message{
+  text-align: center;
+  margin-top:10px ;
+}
+#changePass{
+  margin: 2% 0 0 48%;
+  width: 40%;
+}
+
+@media only screen and (min-width:767px){
+  #submit{
+    margin-left: -10%;
+  }
+}
+
+@media only screen and (max-width:675px){
+  #accountTable td{
+    font-size: 20px;
+  }
+  #accountTable{
+    margin-top: 10%;
+  }
+}
+@media only screen and (max-width:533px){
+  #accountTable{
+    display: none;
+  }
+  #changePass{
+    margin: auto;
+    width: 80%;
+  }
+
+}
+#termsAndConditions{
+  max-height: 600px;
+  overflow-y: scroll;
+  font-size: 15px;
+
+}

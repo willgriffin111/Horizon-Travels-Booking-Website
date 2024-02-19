@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Login</title>
+  
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loginRegisterStyle.css')}}">
+{% endblock %}
+{% block body %}
+
+<div class="uibox">
+  <h1 id="uititle">Login</h1>
+    <form action="" method="POST">
+        <label class="usernamelabel">Email: </label>
+        <input type="text" name="email" class="usernamebox" value="{{request.form.email}}" required><br>
+        
+        <label class="passwordlabel">Password:</label>
+        <input type="password" name="password" class="passwordbox" value="{{request.form.password}}" required><br><br>
+
+
+        <!-- <input type="checkbox" class="remember">
+        <label for="remember" class="rememberlabel">Remember Me</label> -->
+ 
+      <!-- <div class="text-xs-center">
+        <div class="g-recaptcha brochure__form__captcha" data-sitekey="YOUR SITE KEY"></div>
+      </div> -->
+      
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+          {% for message in messages %}
+          <p id="uititle">{{ message }}</p>
+          {% endfor %}
+
+        {% endif %}
+      {% endwith %}
+      <p id="uititle"> {{error}} </p>
+
+
+      <p id="signup"> Havent got an account <br><a href="{{ url_for('signup') }}">Sign up here</p></a>
+      
+      
+
+    <input type="submit" value="Submit" id="submit">
+    </form> 
+
+
+</div>
+
+<div class="main">
+
+  </div>
+{% endblock %}
+
+

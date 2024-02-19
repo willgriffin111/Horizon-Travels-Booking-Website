@@ -1,0 +1,83 @@
+.from,.to{
+    padding-top: 10px;
+    margin: 0 0px 0 20px;
+    font-size: 20px;
+    
+}
+#frombox,#tobox{
+    align-items: center;
+    /*
+    width: 300px;
+    height: 50px;
+    */
+
+    width:75%;
+    height: 50px;
+
+    
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+.traveltype{
+    margin-top: 30px;
+    padding: 25px;
+    background-color: darkgreen;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#air,#coach,#train{
+    margin-left: 40px;
+    align-items: center;
+    width: 30px;
+}
+
+.traveltype > span{
+    white-space: nowrap;
+}
+
+  .datetime{
+    width: 100%;
+    font-size: 20px;
+  }
+
+
+  #out,#return{
+    width: 50%;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 30px;
+    background-color: transparent;
+  }
+
+
+  #outdate,#returndate{
+    font-size: 20px;
+    width: 80%;
+    height: 50px;
+    text-align: center;
+  }
+.triptype{
+    margin: 5% 0 0 14%;
+    font-size: 20px;
+}
+
+
+table tr td {
+  width: 320px;
+
+  word-wrap: break-word;
+  border: 1px solid;
+  display: inline-block;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.cityImage{
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}

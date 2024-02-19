@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Booking</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultsAndBookingsStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    <form  method="POST">
+    <h1 id="uititle">My bookings</h1>
+    
+    {% if queryResults|length !=0 %}
+    <div id="bookingsTableContainer">
+      <table id="bookingsTable">
+        <tr> 
+          <th> Date </th>
+          <th> Travel Type </th>
+          <th> Depature location </th> 
+          <th> Departure time </th> 
+          <th> Arrival location</th>
+          <th> Arrival time</th>
+          <th> Travel time </th>
+          <th>Travel class</th>
+          <th>Seat quantity</th>
+          <th>Total Price </th>
+        </tr>
+        {% for row in queryResults %} 
+          <tr> 
+            <td> {{row[1]}} </td>
+            <td> {{row [2]}} </td> 
+            <td> {{row [3]}} </td> 
+            <td> {{row [4]}} </td>
+            <td> {{row [5]}} </td>
+            <td> {{row [6]}} </td>
+            <td> {{row [7]}} </td>
+            <td> {{row [8]}} </td>
+            <td> {{row[10]}} </td>
+            <td>£{{row [9]}}</td>
+            <td>  <input type="radio" name="departureChoice" value="{{row[0]}}" > Select</td>
+
+          </tr>
+        
+        {% endfor %}
+
+      </table>
+    </div>
+    <div id="inputTableContainer">
+    <table class="inputTable">
+      <tr class="inputTable">
+        <td class="inputTable">
+      <div id="bookingModify">
+        <input type="radio" name="deleteModify" value="delete" onclick="javascript:modifybooking();">Cancel booking
+        <hr>
+        <input type="radio" name="deleteModify" value="modify" id="ModifyBooking" onclick="javascript:modifybooking();" checked>Modify booking 
+      </div>
+
+        </td>
+        <td class="inputTable">
+      
+      <table id="modifyTable">
+        <tr>
+          <th> Date </th>
+          <th>Travel class</th>
+          <th>Seat quantity</th>
+        </tr>
+        <tr>
+          <td> <input type="date" name="bookingDate" class="modifyInput" min="" id="bookingDate" onclick="bookingSetDateRange()" > </td>
+          <td> 
+            <select name ="class" class="modifyInput">
+              <option value="standard"> Standard </option>
+              <option value="business"> Business</option> 
+            </select>
+          </td>
+        <td> <input type="number" name ="quantity" min="1" class="modifyInput"> </td>
+      </tr>
+    </table>
+   
+      </td>
+      </tr>
+      </table>
+    </div>
+   
+    <h3 id="uititle"> {{message}} </h3>
+    <input type="submit" value="Submit" id="submit" >
+      {% else %}
+      <h2 id="uititle">You have no future bookings</h2>
+
+      {% endif %}
+  </form>
+</div>
+
+<div class="main">
+
+  </div>
+
+  {% endblock %}

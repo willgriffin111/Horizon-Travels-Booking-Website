@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Travel</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultsAndBookingsStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+
+<form action="{{url_for('bookingSuccess')}}" method="POST">
+
+
+  <div class="uibox" id="results">
+      <h1 id="uititle">Available transport </h1>
+
+
+      {% if departAvailable==True %}
+        <h2 id="tabletitle">Depature: </h2>
+        {% if departRoutes | length == 0 %}
+          <h2 id="uititle"> Unfortunately we do not offer transport between {{ departLocation }} and {{ arrivalLocation }}</h2>
+        {% else %}
+          <div id="resultstableContainer">
+            <table class="resultstable">
+              <tr> 
+                <th> Departure </th>
+                <th> Depature time </th> 
+                <th> Arrival  </th> 
+                <th> Arrival time</th>
+                <th > Travel time </th>
+                <th> Price </th>
+              </tr>
+          
+              {% for row in departRoutes %} 
+              <tr> 
+                <td> {{row[2]}} </td>
+                <td> {{row [3]}} </td> 
+                <td> {{row [4]}} </td> 
+                <td> {{row [5]}} </td>
+                <td > {{row [6]}} </td>
+                <td> £{{row [7]}} </td>
+                <td>  <input type="radio" name="departureChoice" value="{{row[0]}}" required> BOOK</td>
+              </tr>
+              {% endfor%}
+            </table>
+          </div>
+          <table class="travelSelections">
+            <tr>
+              <td><label class="quantity" min="1">quantity</label></td>
+              <td><label class="class">Travel Class</label></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="number" class="quantity" name="departureQuantity" min="1" required >
+              </td>
+              <td>
+                <select class="class" name="departureTravelClass" required>
+                  <option label="Choose here" value=""></option>   
+                  <option value="business"> Business</option>
+                  <option value="economy"> Economy </option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          
+            
+          {% endif %} <!--length-->
+        {% endif %} <!--departaviable-->
+      {% if departAvailable==False %}
+        <h2 id="tabletitle">Depature: </h2>
+        <h2 id="uititle"> Unfortunately {{ departLocation }} to {{ arrivalLocation }} is not Available on {{ departureDate }}</h2>
+      {% endif %}
+      
+      
+      <!-- TWOWAY -->
+
+      
+      {% if returnAvailable==True %}
+      <h2 id="tabletitle">Return: </h2>
+        {% if returnRoutes | length == 0 %}
+          <h2 id="uititle"> Unfortunately we do not offer transport between {{ arrivalLocation }} and {{ departLocation }}</h2>
+        {% else %}
+          <div id="resultstableContainer">
+            <table class="resultstable">
+              <tr> 
+                <th> Departure </th>
+                <th> Depature time </th> 
+                <th> Arrival </th> 
+                <th> Arrival time</th>
+                <th> Travel time </th>
+                <th> Price </th>
+              </tr>
+              
+              {% for row in returnRoutes %} 
+              <tr> 
+                <td> {{row[2]}} </td>
+                <td> {{row [3]}} </td> 
+                <td> {{row [4]}} </td> 
+                <td> {{row [5]}} </td>
+                <td> {{row [6]}} </td>
+                <td> £{{row [7]}} </td>
+
+                <td>  <input type="radio" name="returnChoice" value="{{row[0]}}" required> BOOK</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <table class="travelSelections">
+            <tr>
+              <td><label class="quantity" min="1">quantity</label></td>
+              <td><label class="class">Travel Class</label></td>
+            </tr>
+            <tr>
+              <td>
+                <!-- <label class="quantity">quantity</label> -->
+                <input type="number" class="quantity" name="arrivalQuantity" required>
+              </td>
+              <td>
+                <!-- <label class="class">Travel Class</label> -->
+                <select class="class" name="arrivalTravelClass" required>
+                  <option label="Choose here" value=""></option>   
+                  <option value="business"> Business</option>
+                  <option value="economy"> Economy </option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          
+          
+          {% endif %}
+        {% elif returnAvailable==False %}
+          <h2 id="tabletitle">Return: </h2>
+          <h2 id="uititle" > Unfortunately {{ arrivalLocation }} to {{ departLocation }} is not Available on {{ arrivalDate }}</h2>
+        {% endif %}
+        
+          
+
+          
+
+        <input type="submit" value="Submit" id="submit" >
+      
+  </div>
+
+</form>
+<div class="main">
+
+  </div>
+
+  {% endblock %}

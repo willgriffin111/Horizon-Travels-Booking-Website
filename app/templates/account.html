@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Account</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/accountStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+
+    <h1 id="uititle">Account</h1>
+    
+    
+    <table id="accountTable">
+        <tr><th><img class="accountImage"src ="{{url_for('static',filename='images/accountImage.png')}}"></a></th></tr>
+        <tr><td> Name: {{fName + " "+lName}}  </td></tr>
+        <tr><td> Dob: {{dob}}</td></tr>
+        <tr><td> Email: {{email}}</td></tr>
+        <tr><td> Account Type: {{accountType}}</td></tr>
+
+    
+    </table>
+
+  
+    
+    <form method="POST">
+    <table id="changePass">
+        <caption><h1 id="uititle"> Change password</h1></caption>
+        <tr><th><label for="password" class="passwordlabel">Current password:</label></th></tr>
+        <tr><td><input type="password" name="currentPassword" class="passwordbox" required><br></th></tr>
+            
+        <tr><th><label for="password" class="passwordlabel">New password:</label></th></tr>
+        <tr><td><input type="password" name="newPassword" class="passwordbox" required><br></th></tr>
+
+        <tr><th><label for="password" class="passwordlabel">Cornfirm password:</label></th></tr>
+        <tr><td><input type="password" name="confirmPassword" class="passwordbox" required><br></th></tr>
+
+           
+    </table>
+    
+    <p id="message">{{message}}</p>
+    <input type="submit" value="Submit" id="submit">
+    
+    </form>
+</div>
+
+<div class="main">
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Admin</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    
+      
+    <h1 id="uititle">Accounts</h1>
+    <table id="pageSelectTable">
+      <tr><td id="pageSelectRow"><input type="button" value="Accounts" class="button"  onclick="window.location.href='{{ url_for('adminAccounts') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Bookings" class="button"  onclick="window.location.href='{{ url_for('adminBookings') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value="Journeys" class="button" onclick="window.location.href='{{ url_for('adminJourneys') }}'"></td>
+      <td id="pageSelectRow"><input type="button" value=" &nbsp; Sales  &nbsp;&nbsp;" class="button" onclick="window.location.href='{{ url_for('adminSales') }}'"></td></tr>
+  </table>
+
+    <form method="POST">
+  
+    <div id="userTableContainer">
+    <table class="userTable">
+        <tr> 
+          <th> User ID</th>
+          <th> First name </th> 
+          <th> Last name </th> 
+          <th> DOB</th>
+          <th> Email</th>
+          <th> Account type </th>
+          <th>Account modified </th>
+          <th>Account created</th>
+        </tr>
+        {% for row in queryResults %} 
+          <tr> 
+            <td> {{row [0]}} </td>
+            <td> {{row [1]}} </td> 
+            <td> {{row [2]}} </td> 
+            <td> {{row [3]}} </td>
+            <td> {{row [4]}} </td>
+            <td> {{row [6]}} </td>
+            <td> {{row [7]}} </td>
+            <td> {{row [8]}} </td>
+            <td>  <input type="radio" name="accountChoice" value="{{row[0]}}" required> Select</td>
+  
+          </tr>
+        {% endfor %}
+    </table>
+  </div>
+    
+    
+    <table class="form-container">
+      <tr>
+      <td>
+      <table id="changePass">
+        <tr>
+          <th><label for="password" class="passwordlabel">New password:</label></th>
+        </tr>
+        <tr>
+          <td><input type="password" name="newPassword" class="passwordbox"></td>
+          
+        </tr>
+        
+      </table>
+      </td>
+      <td style="background-color: transparent;">
+      <table id="promoteDemoteTable">
+        <tr>
+          <td id="promoteDemoteTable"><input type="checkbox" value="Promote" class="adminButton" name="promoteDemoteBox"> <label class="checkboxLabel">Promote selected</label></td>
+
+        </tr>
+        <tr>
+          <td id="promoteDemoteTable"><input type="checkbox" value="Demote" class="adminButton" name="promoteDemoteBox">  <label class="checkboxLabel">Demote selected</label></td>
+
+        </tr>
+      </table>
+      </td>
+      
+    </table>
+    
+    <h3 id="message">{{message}}</h3>
+    <input type="submit" value="Submit" id="submit">
+    </form>
+</div>
+
+<div class="main">
+  </div>
+
+  {% endblock %}

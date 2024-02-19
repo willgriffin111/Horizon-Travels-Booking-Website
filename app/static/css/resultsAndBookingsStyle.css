@@ -1,0 +1,179 @@
+
+
+.uibox{
+
+  max-width: 1300px;
+  margin: auto;
+  margin-top: 50px;
+  height: 800px;
+  
+
+}
+/* #results{
+  max-width: 1000px;
+} */
+#tabletitle{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.resultstable{
+  margin: auto;
+  width: 800px;
+  /* padding-top: 10px; */
+}
+
+
+.resultstable th,
+      .resultstable td {
+        border: 1px solid;
+        
+        font-size: 25px;
+        text-align: center;
+        padding:10px;
+      }
+
+
+@media only screen and (max-width: 800px){
+  #resultstableContainer {
+    max-width: 100%;
+    /* max-height:200px ; */
+    overflow-x: auto;
+    /* overflow-y: auto; */
+  }
+}
+
+
+
+.quantity,.class{
+  /* display: block; */
+  height: 35px;
+  width: 150px;
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+  
+
+}
+.quantity{
+  width: 70px;
+}
+
+.travelSelections{
+  margin-right: auto;
+  margin-left: auto;
+  background-color: whitesmoke;
+  border: 1px solid;
+  text-align: center;
+}
+
+
+
+
+
+/* th, td{
+  border: 1px solid;
+  background-color: whitesmoke;
+  font-size: 25px;
+  text-align: center;
+
+  
+} */
+
+
+
+
+#receiptTable td,
+  #receiptTable th{
+  margin: auto;
+  border: 1px solid;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+}
+@media only screen and (max-width:975px){
+
+   #resultstableContainer {
+    max-width: 100%;
+    overflow-x: auto;
+
+  } 
+  
+}
+
+
+
+#bookingModify{
+  padding: 15px;
+  background-color: darkgreen;
+  text-align: center;
+  font-size: 22px;
+  /* width: 30%; */
+  width: 300px;
+  margin: auto;
+  border-radius: 10px;
+  
+}
+
+hr{
+  border: 1px solid black;
+}
+
+#bookingsTable{
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  margin-bottom:20px ;
+  width: 85%;
+  
+
+}
+#bookingsTable hr,
+  #bookingsTable tr{
+    height: 35px;
+    
+  }
+
+#bookingsTableContainer {
+  max-width: 100%;
+  max-height:475px ;
+  overflow-y: auto;
+
+}
+
+
+
+#modifyTable{
+  padding-top: 20px;
+  margin: auto;
+  padding: 5px
+
+}
+
+#modifyTableContainer{
+  overflow-x: auto;
+}
+.modifyInput{
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+}
+.inputTable{
+  border: none;
+  background-color: transparent;
+  margin: auto;
+
+}
+
+@media only screen and (max-width:950px){
+  #inputTableContainer{
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+#submit{
+  bottom: 0px;
+}
+

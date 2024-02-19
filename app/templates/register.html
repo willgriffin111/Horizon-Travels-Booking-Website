@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Sign up</title>
+
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loginRegisterStyle.css')}}">
+    
+
+{% endblock %}
+{% block body %}
+
+
+<div class="uibox">
+    <h1 id="uititle">Sign up</h1>
+
+    <form method="post">
+      <table id="fnameLnameTable">
+        <tr>
+        <th id="nameRow"><label for="fname" class="fnamelabel" >First name: </label></th>
+        <th id="nameRow"> <label for="lname" class="lnamelabel" >Last name:</label></th>
+        </tr>
+        <tr>
+          <td id="nameRow"><input type="text" name="fname" class="fnamebox" required></td>
+          <td id="nameRow"><input type="text" name="lname" class="lnamebox" required></td>
+        </tr>
+        </table>
+
+
+        <label for="dob" class="doblabel">DOB:</label>
+        <input type="date" name="dob" class="dobbox" required/><br>
+
+        <label for="email" class="emaillabel">Email:</label>
+        <input type="email" name="email" class="emailbox" required/><br>
+
+        <label for="password" class="passwordlabelRegister">Password:</label>
+        <input type="password" name="password" class="passwordboxRegister" required><br>
+
+        
+        <input type="checkbox" name="termsAndConditions" id="termsAndConditions" required>
+        <label for="termsAndConditions">I agree to the <a href ="{{ url_for('termsAndConditions') }}">Terms And Conditions</a></label>
+   
+
+        <!-- <table>
+          <tr>
+
+            <th><label for="cardNumber" class="fnamelabel">Card Number:</label></th>
+            <th><label for="cardExpire" class="lnamelabel">Expire date:</label></th>
+            <th><label for="cardExpire" class="lnamelabel">Sort Code:</label></th>
+          </tr>
+          <tr>
+            <td><input type="number" name="cardNumber" class="cardNumbBox"></td>
+            <td><input type="month" name="cardExpire" class="cardExpireBox"></td>
+            <td><input type="number" name="sortCode" class="sortCodeBox"></td>
+          </tr>
+        </table> -->
+
+        <h3 id="uititle">{{error}}</h3>
+
+        <input type="submit" value="Submit" id="submit">
+      </form>
+
+</div>
+
+<div class="main">
+  </div>
+
+  {% endblock %}

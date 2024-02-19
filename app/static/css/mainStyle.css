@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+    font-family: 'bebas neue';
+
+
+  }
+  
+  body {
+    background-image: url(/static/images/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-position-y: -50px;
+    margin: 0;
+  }
+  
+  @media screen and (min-width: 1500px) {
+    body {
+      background-size: 100%;
+    }
+  }
+ 
+  .header{
+    background-color: whitesmoke;
+    width: 100%;
+    /* padding-top:30px;
+    padding-bottom:25px; */
+    height: 80px;
+
+        
+  }
+
+  .logo1,.logo2{
+    margin-top: 15px;
+    margin-left: 5%;
+    max-height: 50px;
+    display: relative; 
+    display: none;
+  }
+
+  @media only screen and (max-width: 700px){
+    .logo2{
+      display:inline;
+    }
+    .logo1{
+      display:none;
+    }
+  }
+  @media only screen and (min-width: 700px){
+    .logo1{
+      display:inline;
+    }
+    .logo2{
+      display:none;
+    }
+  }
+
+  @media only screen and (max-width: 423px){
+    .logo1{
+      display: none;
+    }
+    .logo2{
+      display:none;
+    }
+
+  }
+ 
+  #navLink{
+    float: right;
+    font-size: 30px;
+    margin: 25px 3% 0 0;
+    white-space: nowrap;
+    color: black;
+    overflow:hidden;
+  } 
+    
+
+
+  
+
+  #navLink:link{
+    text-decoration: none;
+  
+  }
+
+  .uibox{
+    /* margin:4% 0 0 5%; */
+    margin: 50px 0 0 40px;
+    background-color: green;
+    max-width: 450px;
+    height: 650px;
+    
+    /*
+    width: 28%;
+    height: 650px;
+    */
+    padding:0;
+    border-radius: 25px;
+    /* min-width: 275px; */
+    position: relative;
+
+  }
+  @media only screen and (max-width: 490px) {
+    .uibox{
+      margin:0;
+     
+    }
+  }
+
+  #uititle{
+    padding-top: 20px;
+    display:block;
+    text-align: center;
+
+    
+  }
+  th{
+    background-color: lightgray;
+  }
+  td{
+    background-color: whitesmoke;
+  
+  }
+
+#submit{
+    position: absolute; 
+    bottom: 20px;
+    margin: 25px 0 25px 22%;
+    /* margin: auto; */
+    padding-top: 20px;
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-bottom: 20px;
+    text-align: center;
+
+    font-size: 30px;
+    background-color: darkgreen;
+    border: none;
+    border-radius: 5px;
+}
+
+#submit:hover{
+    background-color: lightgray;
+}
+
+
+.main {
+  background-color: white;
+  padding: auto;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  margin-top: 5%;
+
+
+}
+
+

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/indexStyle.css') }}">
+
+    
+    
+{% endblock %}
+{% block body %}
+
+
+
+<div class="uibox">
+    <h1 id="uititle">Enter details</h1>
+
+    <form action="{{url_for('results')}}" method="POST">
+
+
+    <div class="from">
+
+        <label for="frombox">From:</label>
+
+        <select id="frombox"name="departureLocation" onchange="getarrivalcity(this.value)" required>
+            <option label="Choose here" value=""></option>
+            {% for departure in departurelist %}
+                <option value="{{departure}}"> {{departure}} </option>	    
+            {% endfor %} 
+        </select>       
+<!--                 
+        <select name="departureLocation" id="frombox">
+            <option selected disabled hidden>Choose here</option>
+            <option value="newcastle">Newcastle</option>
+            <option value="bristol">Bristol</option>
+            <option value="cardiff">Cardiff</option>
+            <option value="manchester">Manchester</option>
+            <option value="london">London</option>
+            <option value="glasgow">Glasgow</option>
+            <option value="portsmouth"> Portsmouth</option>
+            <option value="dundee">Dundee</option>
+            <option value="edinburgh">Edinburgh</option>
+            <option value="southampton">Southampton</option>
+            <option value="aberdeen">Aberdeen</option>
+            <option value="birmingham">Birmingham</option>
+        </select>
+         -->
+    </div>
+    
+    <div class="to">
+        
+        <label for="to">To:&nbsp; &nbsp; &nbsp;&nbsp;</label>
+        <select id="tobox" name="arrivalLocation">   
+            <option label="Choose here" value=""></option>    
+      
+        </select>
+
+        <!-- <select name="arrivalLocation" id="tobox">
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="newcastle">Newcastle</option>
+            <option value="bristol">Bristol</option>
+            <option value="cardiff">Cardiff</option>
+            <option value="manchester">Manchester</option>
+            <option value="london">London</option>
+            <option value="glasgow">Glasgow</option>
+            <option value="portsmouth"> Portsmouth</option>
+            <option value="dundee">Dundee</option>
+            <option value="edinburgh">Edinburgh</option>
+            <option value="southampton">Southampton</option>
+            <option value="aberdeen">Aberdeen</option>
+            <option value="birmingham">Birmingham</option>
+        </select> -->
+    
+    </div>
+
+    <div class="traveltype">
+            <span><input type="radio" id="air" name="traveltype" value ="air" required><label>Air</label></span>
+            <span><input type="radio" id="coach" name="traveltype" value="coach" required><label>Coach</label></span>
+            <span><input type="radio" id="train" name="traveltype" value="train" required><label >Train</label></span> 
+    </div>
+ <!--
+    <div class = "oneway" >
+       <input type="checkbox" id="single" name="oneway" value="true" onclick="checkClickFunc()" >
+        <input type="radio" id="single" name="oneway"><label>One-way</label>
+        <input type="radio" id="single" name="twoway"><label>Two-way</label>
+    </div> -->
+
+    <div class="triptype">
+    
+        <input type="radio" class="triptype" id="oneway"  name="triptype" value="oneway" required onclick="javascript:oneWay();" >
+        <label>One-way</label>
+        <input type="radio" class="triptype" name="triptype" value="twoway" required onclick="javascript:oneWay();" checked="checked">
+        <label>Two-way</label>
+        
+    </div>
+    
+    <div>
+        <table class="datetime">
+            <tr>
+                <th id="out">Out <br>
+                
+                    <input name="departureDate" type="date" id="outdate" min="" onclick="setDateRange()"required><br>
+                   
+                
+
+                </th>
+                <th id="return">Return
+
+                    <input name="returnDate" type="date" id="returndate" onclick="setDateRange()"required><br>
+                    
+                </th>
+            </tr>
+
+        </table>
+    </div>
+    
+
+    <input type="submit" value="Submit" id="submit" >
+</form>
+</div>
+
+
+
+<div class="main">
+    <table class="boxs">
+        <tr>
+            <td>Newcastle <img class ="cityImage"src="{{url_for('static',filename='images/newcastle.jpg')}}"></td>
+            <td>Bristol <img class ="cityImage"src="{{url_for('static',filename='images/bristol.jpg')}}"></td>
+            <td>Cardiff<img class ="cityImage"src="{{url_for('static',filename='images/cardiff.jpg')}}"></td>
+            <td>Manchester<img class ="cityImage"src="{{url_for('static',filename='images/manchester.jpg')}}"></td>
+            <td>London  <img class ="cityImage"src="{{url_for('static',filename='images/london.jpg')}}"></td>
+            <td>Glasgow<img class ="cityImage"src="{{url_for('static',filename='images/glasgow.jpg')}}"></td>
+            <td>Portsmouth<img class ="cityImage"src="{{url_for('static',filename='images/portsmouth.jpg')}}"></td>
+            <td>Dundee<img class ="cityImage"src="{{url_for('static',filename='images/dundee.jpg')}}"></td>
+            <td>Edinburgh<img class ="cityImage"src="{{url_for('static',filename='images/edinburgh.jpg')}}"></td>
+            <td>Southampton<img class ="cityImage"src="{{url_for('static',filename='images/southampton.jpg')}}"></td>
+            <td>Birmingham<img class ="cityImage"src="{{url_for('static',filename='images/birmingham.jpg')}}"></td>
+            <td>Aberdeen<img class ="cityImage"src="{{url_for('static',filename='images/aberdeen.jpg')}}"></td>
+        </tr>
+    </table>
+  </div>
+  
+
+{% endblock %}
