@@ -1,0 +1,5 @@
+flask
+mysql-connector-python
+passlib
+numpy
+python-dotenv

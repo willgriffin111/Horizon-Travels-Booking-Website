@@ -6,6 +6,10 @@ from datetime import date
 from datetime import datetime
 from functools import wraps
 import numpy as np
+import time
+
+
+time.sleep(5)  # Wait 5 seconds for DB to start
 
 app = Flask(__name__)
 app.secret_key = 'HorizonTravelsSecretKey'
@@ -921,9 +925,4 @@ def logout():
 
 # ------------------------------ RUN ----------------------------------------------
 if __name__ == '__main__':
-    for i in range(13000, 18000): #Searches for an available port from 13000 to 18000
-        try:
-            app.run(port = i, debug=True) #Starts app
-            break
-        except OSError as e:
-            print("Port {} not available".format(i))
+    app.run(host='0.0.0.0', port=8000, debug=True)
